@@ -128,6 +128,28 @@ class StopWatchState extends State<StopWatch> {
       laps.add(milliseconds);
       milliseconds = 0;
     });
+
+    // Stop the stopwatch
+    _stopTimer();
+
+    // Show a dialog with the total run time
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Total Run Time'),
+          content: Text('Your Total Run Time is ${_secondsText(laps.last)}'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _stopTimer() {
