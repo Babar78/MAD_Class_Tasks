@@ -2,6 +2,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class StopWatch extends StatefulWidget {
+  const StopWatch({super.key, required this.runnerName, required this.email});
+
+  final String runnerName;
+  final String email;
+
   @override
   State createState() => StopWatchState();
 }
@@ -54,7 +59,23 @@ class StopWatchState extends State<StopWatch> {
                 ?.copyWith(color: Colors.white),
           ),
           const SizedBox(height: 20),
-          _buildControls()
+          _buildControls(),
+          const SizedBox(height: 20),
+          Text(
+            'Runner: ${widget.runnerName}',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                ?.copyWith(color: Colors.white),
+          ),
+          const SizedBox(width: 20),
+          Text(
+            'Email: ${widget.email}',
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1
+                ?.copyWith(color: Colors.white),
+          )
         ],
       ),
     );
